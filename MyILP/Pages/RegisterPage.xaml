@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="MyILP.Pages.RegisterPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyILP.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Text="Welcome to My ILP" Style="{StaticResource TitleTextBlockStyle}" TextAlignment="Center" FontSize="26.667" Foreground="{ThemeResource PhoneAccentBrush}"/>
+        <StackPanel Grid.Row="1" Margin="10,0">
+            <TextBlock TextWrapping="Wrap" Text="Please enter your information:" Style="{StaticResource FieldHeadStyle}" FontStyle="Italic" Margin="0,30,0,0"/>
+            <TextBlock Text="Employee ID" Style="{StaticResource FieldHeadStyle}"/>
+            <TextBox x:Name="tbEmployeeId" InputScope="Number"/>
+            <TextBlock Text="Full Name" Style="{StaticResource FieldHeadStyle}"/>
+            <TextBox x:Name="tbEmployeeName"/>
+            <TextBlock Text="Location" Style="{StaticResource FieldHeadStyle}"/>
+            <ComboBox x:Name="cbLocation">
+            </ComboBox>
+            <TextBlock Text="LG Name" Style="{StaticResource FieldHeadStyle}"/>
+            <TextBox x:Name="tbLG"/>
+            <TextBlock Text="Email ID (TCS Official)" Style="{StaticResource FieldHeadStyle}"/>
+            <TextBox x:Name="tbEmailId" InputScope="EmailSmtpAddress"/>
+            <Button x:Name="tbSubmit" Click="tbSubmit_Click" Content="Submit" HorizontalAlignment="Center" />
+        </StackPanel>
+    </Grid>
+</Page>

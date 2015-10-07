@@ -1,0 +1,21 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyILP.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:rateControl="using:MyILP.Design"
+    xmlns:MyILP="using:MyILP"
+    x:Class="MyILP.Pages.TestPage"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="#FFDE1D1D">
+        <Button Click="btnGet_Click" x:Name="btnGet" Content="Show Hide" Margin="150,204,0,379" />
+        <MyILP:FeedbackControl x:Name="feedControl" HorizontalAlignment="Center" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
+            <MyILP:FeedbackControl.RenderTransform>
+                <CompositeTransform TranslateY="360"/>
+            </MyILP:FeedbackControl.RenderTransform>
+        </MyILP:FeedbackControl>
+    </Grid>
+</Page>

@@ -1,0 +1,88 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyILP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Design="using:MyILP.Design" x:Name="userControl"
+    x:Class="MyILP.FeedbackControl"
+    mc:Ignorable="d"
+    d:DesignHeight="355.333"
+    d:DesignWidth="400" RenderTransformOrigin="0.5,0.5">
+	<UserControl.Resources>
+		<Storyboard x:Name="FeedbackControl_Entry">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="userControl">
+				<EasingDoubleKeyFrame KeyTime="0" Value="360">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<CubicEase EasingMode="EaseOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<CubicEase EasingMode="EaseOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Name="FeedbackControl_Exit">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="userControl">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<CubicEase EasingMode="EaseOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="360">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<CubicEase EasingMode="EaseOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
+	<UserControl.RenderTransform>
+		<CompositeTransform/>
+	</UserControl.RenderTransform>
+    
+	<Grid Background="{ThemeResource PhoneAccentBrush}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="42"/>
+			<RowDefinition Height="90"/>
+			<RowDefinition Height="41.667"/>
+			<RowDefinition Height="127"/>
+			<RowDefinition Height="56.667"/>
+		</Grid.RowDefinitions>
+		<Rectangle Stroke="{ThemeResource AppBarItemForegroundThemeBrush}" Margin="0,0,0,3.334" Grid.RowSpan="5"/>
+		<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Feedback" VerticalAlignment="Center" FontSize="21.333" FontFamily="Segoe WP Black" FontWeight="Bold" Foreground="{ThemeResource TextBoxForegroundHeaderThemeBrush}" Margin="153,4,153,12" Height="26" Width="94"/>
+		<Grid Grid.Row="1" Margin="0,5,0,15">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="37*"/>
+				<ColumnDefinition Width="163*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+			<TextBlock Text="Faculty :" Margin="0,10,5,9" FontSize="13.333" HorizontalAlignment="Right" VerticalAlignment="Center" TextAlignment="Right"/>
+			<TextBlock HorizontalAlignment="Right" Text="Course :" VerticalAlignment="Center" Grid.Row="1" Margin="0,10,5,9" FontSize="13.333" TextAlignment="Right"/>
+			<TextBlock x:Name="tbFacultyName" Text="facultyNameString" Margin="74,10,0,9" FontSize="13.333" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+			<TextBlock x:Name="tbCourseName" HorizontalAlignment="Left" Text="courseNameString" VerticalAlignment="Center" Grid.Row="1" Margin="74,9,0,10" FontSize="13.333" Grid.ColumnSpan="2"/>
+		</Grid>
+
+		<Design:StarRateControl x:Name="rating" VerticalAlignment="Center" Grid.Row="2" Width="200" Height="40" HorizontalAlignment="Center" TabIndex="9" Margin="100,0,100,1.667" />
+		<StackPanel x:Name="spComments" Grid.Row="3" Grid.RowSpan="3" Margin="0" d:IsHidden="True">
+			<TextBlock TextWrapping="Wrap" Text="Comments :" Margin="10,0"/>
+			<TextBox x:Name="tbComments" Margin="10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" Height="105" FontSize="13.333" AcceptsReturn="True" InputScope="AlphanumericFullWidth" TabIndex="10"/>
+		</StackPanel>
+		<StackPanel x:Name="spAvgRating" Grid.Row="3" Grid.RowSpan="3" Margin="0">
+			<TextBlock TextWrapping="Wrap" Text="Total Feedbacks" TextAlignment="Center" FontFamily="Segoe WP Black" FontWeight="Bold" Margin="0,5,0,0" FontSize="13.333"/>
+			<TextBlock x:Name="tbFeedbacks" TextWrapping="Wrap" Text="100" TextAlignment="Center" FontFamily="Segoe WP Black" FontWeight="Bold" FontSize="13.333"/>
+			<TextBlock TextWrapping="Wrap" Text="Average Rating" Margin="10,5,10,0" TextAlignment="Center" FontFamily="Segoe WP Black" FontSize="18.667" FontWeight="Bold"/>
+			<TextBlock x:Name="tbRating" TextWrapping="Wrap" Text="4.8" Margin="10,0" TextAlignment="Center" FontFamily="Segoe UI Light" FontSize="64" FontWeight="Bold"/>
+		</StackPanel>
+		<StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
+			<Button x:Name="bSubmit" Content="Submit" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,5,0" Click="Button_Click" TabIndex="1"/>
+			<Button x:Name="bCancel" Content="Cancel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,0,0,0" Click="Button_Click_1" TabIndex="2"/>
+		</StackPanel>
+
+	</Grid>
+</UserControl>

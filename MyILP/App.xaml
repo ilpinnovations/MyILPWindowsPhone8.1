@@ -1,0 +1,94 @@
+﻿<Application
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyILP"
+    xmlns:code="using:MyILP.Code" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+    x:Class="MyILP.App"
+    >
+
+    <Application.Resources>
+        <Style x:Key="FieldHeadStyle" TargetType="TextBlock">
+        	<Setter Property="TextWrapping" Value="Wrap" />
+        	<Setter Property="Margin" Value="0,10,0,0" />
+        	<Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+        
+        <code:ScheduleItemConverter x:Key="scheduleItemConverter" />
+        <DataTemplate x:Key="listScheduleItemTemplate">
+        	<Grid Margin="5,10" d:DesignWidth="220.833" d:DesignHeight="115.5">
+        		<Grid.RowDefinitions>
+        			<RowDefinition/>
+        			<RowDefinition/>
+        			<RowDefinition/>
+        		</Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" FontSize="16" TextAlignment="Left" FontFamily="Segoe UI Light" Text="{Binding Slot, ConverterParameter=slot, Converter={StaticResource scheduleItemConverter}}" />
+                <TextBlock Grid.Row="0" FontSize="16" TextAlignment="Right" FontFamily="Segoe UI Light" Text="{Binding Room, ConverterParameter=room, Converter={StaticResource scheduleItemConverter}}" />
+                <TextBlock Grid.Row="1" FontSize="18" Text="{Binding Faculty}" FontFamily="Segoe UI Light" />
+        		<TextBlock Grid.Row="2" FontSize="20" Text="{Binding Course}" Foreground="{ThemeResource PhoneAccentBrush}" TextWrapping="Wrap" FontFamily="Segoe UI Light" />
+        	</Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="listNotificationItemTemplate">
+            <Grid Margin="5,10" d:DesignWidth="220.833" d:DesignHeight="115.5">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" FontSize="15" Text="{Binding Date}" FontFamily="Segoe UI Light" TextAlignment="Right" />
+                <TextBlock Grid.Row="1" FontSize="20" Text="{Binding Message}" Foreground="{ThemeResource PhoneAccentBrush}" TextWrapping="Wrap" FontFamily="Segoe UI Light" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="listEContactItemTemplate">
+            <Grid Margin="5,10" d:DesignWidth="220.833" d:DesignHeight="115.5">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" FontSize="18" Text="{Binding Name}" FontFamily="Segoe UI Light" />
+                <TextBlock Grid.Row="1" FontSize="20" Text="{Binding Contact}" Foreground="{ThemeResource PhoneAccentBrush}" TextWrapping="Wrap" FontFamily="Segoe UI Light" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="listLeaderboardOLDItemTemplate">
+            <Grid Margin="5,10" d:DesignWidth="351.833" d:DesignHeight="76.667">
+            	<Grid.RowDefinitions>
+            		<RowDefinition Height="12*"/>
+            		<RowDefinition Height="13*"/>
+            	</Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="51*"/>
+                    <ColumnDefinition Width="125*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" FontSize="22" TextAlignment="Left" FontFamily="Segoe UI Light" Text="{Binding EmployeeName}" Grid.ColumnSpan="2" VerticalAlignment="Center" />
+                <TextBlock FontSize="18" FontFamily="Segoe UI Light" Text="{Binding Points}" Foreground="{ThemeResource PhoneAccentBrush}" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" />
+                <TextBlock HorizontalAlignment="Left" Text="Points: " VerticalAlignment="Center" FontSize="18" Grid.Row="1"/>
+            </Grid>
+        </DataTemplate>
+        <code:PointsToBadgeConverter x:Key="pointsToBadgeConverter" />
+        <DataTemplate x:Key="listLeaderboardItemTemplate">
+            <Grid Margin="0,5" d:DesignWidth="351.833" d:DesignHeight="76.667" Height="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="65*"/>
+                    <ColumnDefinition Width="206*"/>
+                </Grid.ColumnDefinitions>
+                <Image Margin="0" Grid.RowSpan="2" Source="{Binding Points, Converter={StaticResource pointsToBadgeConverter}}" Width="70" Height="70" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            	<TextBlock Grid.Column="1" FontSize="22" TextAlignment="Left" FontFamily="Segoe UI Light" Text="{Binding EmployeeName}" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Margin="10,0,0,5" />
+            	<TextBlock FontSize="18" FontFamily="Segoe UI Light" Text="{Binding Points}" Foreground="{ThemeResource PhoneAccentBrush}" Grid.Row="1" VerticalAlignment="Top" Margin="5,5,0,0" Grid.Column="2" />
+            	<TextBlock HorizontalAlignment="Left" Text="Points: " VerticalAlignment="Top" FontSize="18" Grid.Row="1" Margin="10,5,0,0" Grid.Column="1" FontFamily="Segoe UI Light"/>
+            </Grid>
+        </DataTemplate>
+        <!--<Button Grid.Column="3" Style={StaticResource helpButtonStyle} />-->
+        <Style x:Key="helpButtonStyle" TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="MinWidth" Value="0" />
+            <Setter Property="Content" Value="?" />
+            <Setter Property="Background" Value="Red" />
+        </Style>
+    </Application.Resources>
+    
+</Application>
